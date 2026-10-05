@@ -5,7 +5,7 @@ export function Footer() {
     <footer>
       <div className="brand">
         <BrandMark />
-        <span>SOCIAL AI</span>
+        <span>ELVA SOCIAL AI</span>
       </div>
       <p>
         AI-powered social media management for modern businesses.

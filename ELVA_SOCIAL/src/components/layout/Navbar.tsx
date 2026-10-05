@@ -11,7 +11,7 @@ export function Navbar() {
     <nav className="nav">
       <button className="brand" onClick={() => scrollTo('top')}>
         <BrandMark />
-        <span>SOCIAL AI</span>
+        <span>ELVA SOCIAL AI</span>
       </button>
       <div className="navlinks">
         {navLinks.map(([x, id]) => (
