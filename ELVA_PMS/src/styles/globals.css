@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap");
+/* Base: tokens, reset, typography */
+:root {
+  --ink: #09233a;
+  --navy: #061a2c;
+  --blue: #1769e0;
+  --sky: #eaf4ff;
+  --green: #00a97a;
+  --mint: #dff8ee;
+  --line: #dbe5eb;
+  --muted: #627486;
+  --off: #f5f8fa;
+  --serif: Georgia, serif;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  font-family: Manrope, Arial, sans-serif;
+  color: var(--ink);
+  background: #fff;
+  overflow-x: hidden;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+  border: 0;
+}
+.section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 124px 28px;
+}
+.eyebrow {
+  font:
+    500 11px "DM Mono",
+    monospace;
+  letter-spacing: 0.09em;
+  color: #3675c3;
+  margin: 0 0 17px;
+}
+.eyebrow i {
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: #3675c3;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+h1 {
+  font-size: clamp(42px, 5vw, 75px);
+  line-height: 1.07;
+  letter-spacing: -0.059em;
+  font-weight: 700;
+}
+h1 em {
+  font-family: var(--serif);
+  font-weight: 400;
+  color: #3675c3;
+}
+h2 {
+  font-size: clamp(34px, 4vw, 53px);
+  letter-spacing: -0.055em;
+  line-height: 1.1;
+  margin-bottom: 18px;
+}
+p {
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+/* Motion */
+@keyframes line {
+  0% {
+    left: -40%;
+  }
+  100% {
+    left: 100%;
+  }
+}

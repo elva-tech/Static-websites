@@ -1,0 +1,277 @@
+@media (max-width: 900px) {
+  .nav,
+  .section,
+  .footer,
+  .hero,
+  .final-cta {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .nav-links {
+    gap: 1rem;
+  }
+  .nav-links > a:not(.button) {
+    font-size: 0.65rem;
+  }
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 6rem;
+  }
+  .hero-visual {
+    max-width: 650px;
+    width: 100%;
+  }
+  .workflow-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .workflow-grid article:nth-child(3) {
+    border-right: 0;
+  }
+  .workflow-grid article:nth-child(n + 4) {
+    margin-top: 1rem;
+  }
+  .split-feature,
+  .monitoring,
+  .paper,
+  .markets,
+  .enrolment,
+  .trust,
+  .risk {
+    gap: 3.5rem;
+  }
+  .split-feature,
+  .monitoring,
+  .paper,
+  .markets,
+  .enrolment,
+  .trust,
+  .risk {
+    grid-template-columns: 1fr 1fr;
+  }
+  .difference {
+    grid-template-columns: 1fr 1fr;
+  }
+  .performance-note {
+    grid-column: 1/-1;
+  }
+  .footer-main {
+    grid-template-columns: 1.5fr repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .control {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (max-width: 680px) {
+  .section {
+    padding: 5.5rem 1.2rem;
+  }
+  .nav {
+    min-height: 64px;
+    padding: 0 1.2rem;
+  }
+  .menu-button {
+    display: block;
+  }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    padding: 1.2rem;
+    background: var(--ground);
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+  .nav-links.is-open {
+    display: flex;
+  }
+  .nav-links > a:not(.button) {
+    padding: 0.95rem 0;
+    font-size: 0.76rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-links .button {
+    margin-top: 1rem;
+    min-height: 46px;
+  }
+  .hero {
+    min-height: auto;
+    padding: 4.5rem 1.2rem 5rem;
+    gap: 2.5rem;
+  }
+  .hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .hero .button {
+    width: 100%;
+  }
+  .hero-note {
+    font-size: 0.63rem;
+  }
+  .market-brief {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .market-brief ol {
+    flex-wrap: wrap;
+  }
+  .terminal-grid {
+    grid-template-columns: 1fr;
+  }
+  .terminal aside {
+    display: none;
+  }
+  .terminal main {
+    padding: 0.8rem;
+  }
+  .instrument strong {
+    font-size: 1rem;
+  }
+  .section-heading,
+  .problem,
+  .split-feature,
+  .monitoring,
+  .paper,
+  .markets,
+  .control-grid,
+  .enrolment,
+  .faq,
+  .trust,
+  .risk {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .section-heading .section-copy {
+    grid-column: 1;
+    grid-row: 3;
+    padding-top: 0;
+  }
+  .section-heading {
+    margin-bottom: 2.5rem;
+  }
+  .quote-panel {
+    padding: 1.7rem;
+  }
+  .problem {
+    gap: 1.5rem;
+  }
+  .workflow-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .workflow-grid article:nth-child(n) {
+    border-right: 0;
+    padding: 1rem 1rem 1rem 0;
+    min-height: 170px;
+  }
+  .workflow-grid article:nth-child(odd) {
+    border-right: 1px solid var(--line);
+    padding-right: 1rem;
+  }
+  .workflow-grid article:nth-child(even) {
+    padding-left: 1rem;
+  }
+  .workflow-grid article:nth-child(n + 3) {
+    margin-top: 1rem;
+  }
+  .workflow-grid em {
+    display: none;
+  }
+  .analysis-list {
+    grid-template-columns: 1fr;
+  }
+  .monitoring-flow span,
+  .monitoring-flow span:nth-of-type(n) {
+    margin-left: 0;
+  }
+  .control {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+  .control-list p {
+    grid-template-columns: 35px 1fr;
+  }
+  .control-list b {
+    grid-column: 2;
+    margin-top: 0.3rem;
+  }
+  .paper-list {
+    margin-top: 0;
+  }
+  .feature-grid,
+  .audience-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+  .feature-grid article:nth-child(3n + 2),
+  .audience-grid article {
+    border-left: 0;
+    border-right: 0;
+  }
+  .feature-grid article {
+    min-height: 140px;
+  }
+  .audience-grid article {
+    min-height: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .difference {
+    grid-template-columns: 1fr;
+  }
+  .performance-note {
+    grid-column: auto;
+  }
+  .pricing-grid article + article {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+  .pricing-grid article {
+    min-height: 235px;
+  }
+  .enrolment {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .faq .section-heading {
+    margin: 0;
+  }
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+  .trust-grid p:nth-child(n) {
+    border-right: 0;
+    padding-left: 0;
+  }
+  .risk .eyebrow {
+    margin-bottom: 0;
+  }
+  .final-cta {
+    padding: 5.5rem 1.2rem;
+  }
+  .final-cta div {
+    flex-direction: column;
+  }
+  .footer {
+    padding: 4rem 1.2rem 1.5rem;
+  }
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem 1rem;
+  }
+  .footer-main > div:first-child {
+    grid-column: 1/-1;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 2.5rem;
+  }
+}

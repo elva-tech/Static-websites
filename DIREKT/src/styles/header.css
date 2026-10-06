@@ -1,0 +1,122 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(247, 245, 241, 0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.nav {
+  max-width: 1380px;
+  min-height: 76px;
+  margin: auto;
+  padding: 0 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+.brand img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.65rem;
+}
+.nav-links > a:not(.button) {
+  color: #4a5f73;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.nav-links > a:not(.button):hover {
+  color: var(--mint);
+}
+.nav-links .button {
+  min-height: 38px;
+  padding: 0 0.8rem 0 1rem;
+  gap: 1rem;
+  font-size: 0.65rem;
+}
+.menu-button {
+  display: none;
+  background: transparent;
+  border: 0;
+  padding: 0.4rem;
+  cursor: pointer;
+}
+.menu-button i {
+  display: block;
+  width: 23px;
+  height: 1px;
+  background: var(--ink);
+  margin: 5px 0;
+}
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 5rem 2.5rem 2rem;
+  max-width: 1280px;
+  margin: auto;
+}
+.footer-main {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: 3rem;
+}
+.footer-main .brand {
+  margin-bottom: 1.3rem;
+}
+.footer-main > div:first-child p {
+  max-width: 270px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  margin-bottom: 1.5rem;
+}
+.footer-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.footer-group h3 {
+  color: var(--mint);
+  margin-bottom: 0.35rem;
+  font:
+    500 0.65rem/1 "DM Mono",
+    monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.footer-group a {
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+.footer-group a:hover {
+  color: var(--ink);
+}
+.footer-bottom {
+  color: #6a7b8c;
+  border-top: 1px solid var(--line);
+  margin-top: 4rem;
+  padding-top: 1.4rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font:
+    400 0.64rem/1.5 "DM Mono",
+    monospace;
+}
+.footer-bottom a {
+  color: var(--mint);
+}
