@@ -24,7 +24,7 @@ export function HomePage() {
         <PlatformIntro />
         <InvestBorrow />
         <AppAndAdmin />
-        <Tenants />
+        {/* <Tenants /> */}
         <Operations />
         <Security />
         <HowItWorks />
