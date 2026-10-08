@@ -46,8 +46,8 @@ export const faqItems: [string, string][] = [
     'Can multiple people approve content?',
     'The product is designed to support role-based approval workflows as it evolves.',
   ],
-  [
-    'Is ELVA SOCIAL AI only for ELVA SOCIAL AI Tech?',
-    'No. ELVA SOCIAL AI is the first implementation in a future multi-tenant SaaS product designed for other businesses too.',
-  ],
+  // [
+  //   'Is ELVA SOCIAL AI only for ELVA SOCIAL AI Tech?',
+  //   'No. ELVA SOCIAL AI is the first implementation in a future multi-tenant SaaS product designed for other businesses too.',
+  // ],
 ]

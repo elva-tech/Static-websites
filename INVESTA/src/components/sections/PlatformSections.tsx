@@ -255,26 +255,26 @@ export function AppAndAdmin() {
   );
 }
 export function Tenants() {
-  return (
-    <section id="tenants" className="section tenant-section">
-      <div className="container">
-        <SectionHeading
-          eyebrow="MULTI-TENANT BY DESIGN"
-          title="One platform. Multiple organizations."
-        >
-          Each organization manages its own customers and business data. Client
-          Admins work within their organization, while authorized Super Admin
-          users manage the overall ELVA Investa environment.
-        </SectionHeading>
-        <TenantDiagram />
-        <div className="tenant-note">
-          <ShieldCheck size={19} />
-          <span>
-            Tenant-level data isolation supports independent organization
-            workspaces.
-          </span>
-        </div>
-      </div>
-    </section>
-  );
+  // return (
+  //   <section id="tenants" className="section tenant-section">
+  //     <div className="container">
+  //       <SectionHeading
+  //         eyebrow="MULTI-TENANT BY DESIGN"
+  //         title="One platform. Multiple organizations."
+  //       >
+  //         Each organization manages its own customers and business data. Client
+  //         Admins work within their organization, while authorized Super Admin
+  //         users manage the overall ELVA Investa environment.
+  //       </SectionHeading>
+  //       <TenantDiagram />
+  //       <div className="tenant-note">
+  //         <ShieldCheck size={19} />
+  //         <span>
+  //           Tenant-level data isolation supports independent organization
+  //           workspaces.
+  //         </span>
+  //       </div>
+  //     </div>
+  //   </section>
+  // );
 }
