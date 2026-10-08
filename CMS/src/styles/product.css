@@ -70,6 +70,8 @@
   padding: 18px;
   flex: 1;
   min-width: 0;
+  color: var(--ink);
+  color: #162033;
   animation: screen-in 0.35s ease;
 }
 
