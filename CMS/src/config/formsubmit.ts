@@ -1,0 +1,1 @@
+export const FORMSUBMIT_ENDPOINT = "tech.elva@gmail.com";
