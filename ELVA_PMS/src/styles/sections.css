@@ -791,3 +791,13 @@ input[aria-invalid="true"] {
   border: 1px solid #bfcfd9;
   color: var(--ink);
 }
+
+
+/* form css */
+.form-error {
+  display: block;
+  margin-top: 5px;
+  color: #b42318;
+  font-size: 11px;
+  font-weight: 600;
+}

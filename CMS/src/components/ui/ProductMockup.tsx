@@ -1,5 +1,18 @@
 import { ArrowUpRight, MoreHorizontal } from "lucide-react";
 
+/** Illustrative material quantities — percentage is derived from these values. */
+export const STEEL_RECEIVED_UNITS = 50;
+export const STEEL_REMAINING_UNITS = 10;
+
+export function steelReceivedPercent(
+  receivedUnits: number,
+  remainingUnits: number,
+): number {
+  const total = receivedUnits + remainingUnits;
+  if (total <= 0) return 0;
+  return (receivedUnits / total) * 100;
+}
+
 export type ProductView =
   | "dashboard"
   | "projects"
@@ -68,6 +81,12 @@ function pathFor(view: ProductView) {
 }
 
 function DashboardScreen() {
+  const receivedPct = steelReceivedPercent(
+    STEEL_RECEIVED_UNITS,
+    STEEL_REMAINING_UNITS,
+  );
+  const receivedPctLabel = receivedPct.toFixed(2);
+
   return (
     <>
       <div className="app-title">
@@ -110,14 +129,25 @@ function DashboardScreen() {
         <div className="material-card">
           <small>Material tracking</small>
           <h4>Steel</h4>
-          <div className="ring">
-            80<small>%</small>
+          <p className="material-pct-label">{receivedPctLabel}% received</p>
+          <div
+            className="material-progress"
+            role="progressbar"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={receivedPct}
+            aria-label={`Steel received: ${receivedPctLabel} percent`}
+          >
+            <div
+              className="material-progress-fill"
+              style={{ width: `${receivedPct}%` }}
+            />
           </div>
           <p>
-            <span>Received</span> 50 units
+            <span>Received</span> {STEEL_RECEIVED_UNITS} units
           </p>
           <p>
-            <span>Remaining</span> 10 units
+            <span>Remaining</span> {STEEL_REMAINING_UNITS} units
           </p>
         </div>
       </div>
@@ -179,9 +209,9 @@ function MaterialsScreen() {
       kicker="Materials"
       title="Steel"
       rows={[
-        ["Received", "50 units"],
+        ["Received", `${STEEL_RECEIVED_UNITS} units`],
         ["Consumed", "Recorded on the project"],
-        ["Remaining", "10 units"],
+        ["Remaining", `${STEEL_REMAINING_UNITS} units`],
         ["History", "Transaction list"],
         ["Project", "Mahendra Enclave 03"],
       ]}

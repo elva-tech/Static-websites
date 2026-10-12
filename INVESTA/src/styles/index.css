@@ -1777,10 +1777,10 @@ button {
   .operation-list {
     grid-template-columns: 1fr;
   }
-  .investment-summary > div {
-    flex-wrap: wrap;
-    gap: 9px;
-  }
+ .investment-summary > div {
+  flex-wrap: nowrap;
+  gap: 3px;
+}
   .investment-summary i {
     max-width: none;
     width: 10px;
@@ -1879,4 +1879,23 @@ button {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+
+
+
+
+/* phonedemo css  */
+.phone--image {
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.phone-demo-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
 }

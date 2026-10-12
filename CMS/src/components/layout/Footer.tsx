@@ -22,9 +22,11 @@ export function Footer() {
         </div>
         <div>
           <b>Company</b>
-          <Link to="/about">About ELVA</Link>
+          <Link to="/about">About CMS</Link>
           <Link to="/contact">Contact</Link>
           <Link to="/contact">Request Demo</Link>
+          <Link to="/privacy-policy">Privacy Policy</Link>
+          <Link to="/terms-and-conditions">Terms &amp; Conditions</Link>
         </div>
         <div>
           <b>ELVA CMS</b>

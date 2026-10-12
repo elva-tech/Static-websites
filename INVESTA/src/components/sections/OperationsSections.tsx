@@ -17,6 +17,8 @@ import { WorkflowDiagram } from "../diagrams/WorkflowDiagram";
 import { SecurityDiagram } from "../diagrams/SecurityDiagram";
 import { faqItems, demoFormFields } from "../../data/content";
 
+import { FORMSUBMIT_ENDPOINT } from "../../config/formsubmit";
+
 const DEMO_SUBMITTED_KEY = "elva-investa-demo-submitted";
 
 function readDemoSubmittedState() {
@@ -271,19 +273,62 @@ export function DemoForm() {
   const [submitted, setSubmitted] = useState(readDemoSubmittedState);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const submit = (e: FormEvent<HTMLFormElement>) => {
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
     const next = validateDemoForm(data);
     setErrors(next);
+
     if (Object.keys(next).length) return;
 
     try {
-      localStorage.setItem(DEMO_SUBMITTED_KEY, "true");
+      const response = await fetch(
+        `https://formsubmit.co/ajax/${FORMSUBMIT_ENDPOINT}`,
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: data.get("name"),
+            company: data.get("company"),
+            email: data.get("email"),
+            mobile: data.get("mobile"),
+            city: data.get("city"),
+            interest: data.get("interest"),
+            size: data.get("size"),
+            message: data.get("message"),
+
+            _subject: "New ELVA Investa Demo Request",
+            _template: "table",
+            _captcha: "true",
+            _url: window.location.href,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Submission failed");
+      }
+
+      try {
+        localStorage.setItem(DEMO_SUBMITTED_KEY, "true");
+      } catch {
+        /* storage unavailable */
+      }
+
+      setErrors({});
+      setSubmitted(true);
+      form.reset();
     } catch {
-      /* storage unavailable */
+      setErrors({
+        form: "Unable to submit your request right now. Please try again.",
+      });
     }
-    setSubmitted(true);
   };
 
   const resetForm = () => {
@@ -315,7 +360,7 @@ export function DemoForm() {
               Submit another request <ArrowUpRight size={16} />
             </button>
             <small>
-              This was a frontend-only demonstration. No request was sent.
+              Your request has been sent successfully. Our team will get in touch with you shortly.
             </small>
           </motion.div>
         ) : (
@@ -349,6 +394,12 @@ export function DemoForm() {
               </div>
             </div>
             <form onSubmit={submit} noValidate>
+              {errors.form && (
+                <p className="error" role="alert">
+                  {errors.form}
+                </p>
+              )}
+
               {demoFormFields.map(([name, label, type]) => (
                 <label key={name}>
                   {label} *
@@ -400,7 +451,7 @@ export function DemoForm() {
                 Request demo <ArrowUpRight size={17} />
               </button>
               <p className="form-note">
-                Frontend-only form. A submission service can be connected here.
+                Your details are securely sent to the ELVA team.
               </p>
             </form>
           </motion.div>

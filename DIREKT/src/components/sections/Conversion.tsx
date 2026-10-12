@@ -1,4 +1,5 @@
 import { FormEvent, useEffect, useState } from "react";
+import { FORMSUBMIT_ENDPOINT } from "../../config/formsubmit";
 import { faqs } from "../../data/content";
 import {
   Button,
@@ -160,9 +161,56 @@ export function Pricing() {
   );
 }
 
+function validateEnrolmentForm(data: FormData) {
+  const errors: Record<string, string> = {};
+
+  const name = String(data.get("name") ?? "").trim();
+  if (!name) {
+    errors.name = "Full name is required.";
+  } else if (name.length < 2 || !/[a-zA-Z]/.test(name)) {
+    errors.name = "Enter a valid full name.";
+  }
+
+  const email = String(data.get("email") ?? "").trim();
+  if (!email) {
+    errors.email = "Email is required.";
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+    errors.email = "Enter a valid email address.";
+  }
+
+  const phone = String(data.get("phone") ?? "").trim();
+  const digitsOnly = phone.replace(/\D/g, "");
+
+  if (!phone) {
+    errors.phone = "Mobile number is required.";
+  } else if (!/^\d{10}$/.test(digitsOnly)) {
+    errors.phone = "Enter a valid 10-digit mobile number.";
+  } else if (!/^[6-9]\d{9}$/.test(digitsOnly)) {
+    errors.phone = "Enter a valid 10-digit Indian mobile number.";
+  }
+
+  const country = String(data.get("country") ?? "").trim();
+  if (!country) {
+    errors.country = "Select your country.";
+  }
+
+  const experience = String(data.get("experience") ?? "").trim();
+  if (!experience) {
+    errors.experience = "Select your trading experience.";
+  }
+
+  const market = String(data.get("market") ?? "").trim();
+  if (!market) {
+    errors.market = "Select your preferred market.";
+  }
+
+  return errors;
+}
+
 export function Enrolment() {
   const initial = readEnrolmentState();
   const [submitted, setSubmitted] = useState(false);
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [selectedPlan, setSelectedPlan] = useState<PlanName | null>(
     initial.selectedPlan,
   );
@@ -188,9 +236,61 @@ export function Enrolment() {
     };
   }, []);
 
-  const submit = (event: FormEvent<HTMLFormElement>) => {
+  const submit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(true);
+
+    const form = event.currentTarget;
+    const data = new FormData(form);
+
+    const errors = validateEnrolmentForm(data);
+
+    setFormErrors(errors);
+
+    if (Object.keys(errors).length > 0) {
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        `https://formsubmit.co/ajax/${FORMSUBMIT_ENDPOINT}`,
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: data.get("name"),
+            email: data.get("email"),
+            phone: data.get("phone"),
+            country: data.get("country"),
+            experience: data.get("experience"),
+            market: data.get("market"),
+            plan: selectedPlan ?? "General Enquiry",
+            paperTrading:
+              data.get("paper") === "yes" ? "Interested" : "Not interested",
+
+            _subject: `New Direkt Enrolment${selectedPlan ? ` - ${selectedPlan}` : ""}`,
+            _replyto: data.get("email"),
+            _template: "table",
+            _captcha: "true",
+            _url: window.location.href,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Submission failed");
+      }
+
+      setFormErrors({});
+      setSubmitted(true);
+      form.reset();
+    } catch {
+      setFormErrors({
+        form: "Unable to submit your request right now. Please try again.",
+      });
+    }
   };
 
   return (
@@ -214,6 +314,11 @@ export function Enrolment() {
         </ol>
       </div>
       <form id="enrol-form" onSubmit={submit}>
+        {formErrors.form && (
+          <p className="form-error" role="alert">
+            {formErrors.form}
+          </p>
+        )}
         <h3>Enrol in Direkt</h3>
         {selectedPlan && (
           <div className="selected-plan" id="selected-plan" aria-live="polite">
@@ -226,15 +331,31 @@ export function Enrolment() {
           <label>
             Full name
             <input required name="name" autoComplete="name" />
+            {formErrors.name && (
+              <small className="form-error">{formErrors.name}</small>
+            )}
           </label>
+
+
+
           <label>
             Email
             <input required type="email" name="email" autoComplete="email" />
+            {formErrors.email && (
+              <small className="form-error">{formErrors.email}</small>
+            )}
           </label>
+
+
           <label>
             Mobile number
             <input required type="tel" name="phone" autoComplete="tel" />
+            {formErrors.phone && (
+              <small className="form-error">{formErrors.phone}</small>
+            )}
           </label>
+
+
           <label>
             Country
             <select required name="country" defaultValue="">
@@ -246,7 +367,12 @@ export function Enrolment() {
               <option>United States</option>
               <option>Other</option>
             </select>
+            {formErrors.country && (
+              <small className="form-error">{formErrors.country}</small>
+            )}
           </label>
+
+
           <label>
             Trading experience
             <select required name="experience" defaultValue="">
@@ -257,7 +383,12 @@ export function Enrolment() {
               <option>Some experience</option>
               <option>Experienced</option>
             </select>
+            {formErrors.experience && (
+              <small className="form-error">{formErrors.experience}</small>
+            )}
           </label>
+
+
           <label>
             Preferred market
             <select required name="market" defaultValue="">
@@ -267,7 +398,12 @@ export function Enrolment() {
               <option>Silver futures</option>
               <option>Other futures</option>
             </select>
+            {formErrors.market && (
+              <small className="form-error">{formErrors.market}</small>
+            )}
           </label>
+
+
         </div>
         <label className="checkbox">
           <input
@@ -279,6 +415,7 @@ export function Enrolment() {
           />{" "}
           I’m interested in paper trading
         </label>
+
         <button type="submit" className="form-submit">
           {submitted ? "Interest received — thank you" : "Enrol now"}{" "}
           <span>↗</span>

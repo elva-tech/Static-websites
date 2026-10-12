@@ -11,7 +11,7 @@ const nav = [
   ["How It Works", "/how-it-works"],
   ["User Roles", "/roles"],
   ["Use Cases", "/use-cases"],
-  ["About ELVA", "/about"],
+  ["About CMS", "/about"],
   ["Contact", "/contact"],
 ];
 export function Header() {

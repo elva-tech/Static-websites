@@ -12,6 +12,7 @@ import {
   UseCases,
 } from "./pages/Pages";
 import { Home } from "./pages/Home";
+import { PrivacyPolicy, TermsAndConditions } from "./pages/Legal";
 
 export default function App() {
   const { pathname } = useLocation();
@@ -30,6 +31,8 @@ export default function App() {
           <Route path="/roles" element={<Roles />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         </Routes>
       </main>
       <Footer />

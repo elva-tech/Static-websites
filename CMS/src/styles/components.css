@@ -219,3 +219,31 @@
   font-size: 22px;
   color: var(--accent);
 }
+
+
+@media (min-width: 480px) and (max-width: 760px) {
+  .nav-wrap {
+    justify-content: space-between;
+  }
+
+  .brand {
+    margin-right: auto;
+    flex-shrink: 0;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .menu {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    position: static;
+    transform: none;
+  }
+}

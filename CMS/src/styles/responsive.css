@@ -99,7 +99,7 @@
     border-bottom-color: #2c3848;
   }
 
-  .mobile-cta {
+  .nav:not(.open) .mobile-cta {
     display: none;
   }
 

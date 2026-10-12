@@ -208,21 +208,28 @@
   font-size: 22px;
 }
 
-.ring {
-  margin: 10px auto;
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  border: 8px solid #e4eee9;
-  border-top-color: var(--accent);
-  display: grid;
-  place-items: center;
+.material-pct-label {
+  margin: 6px 0 10px;
   font-family: var(--serif);
   font-size: 20px;
+  font-weight: 600;
+  color: var(--ink);
+  justify-content: flex-start;
 }
 
-.ring small {
-  font-size: 11px;
+.material-progress {
+  height: 8px;
+  border-radius: 999px;
+  background: #e4eee9;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.material-progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: inherit;
+  transition: width 0.35s ease;
 }
 
 .material-card p {

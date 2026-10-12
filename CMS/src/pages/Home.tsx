@@ -2,6 +2,15 @@ import { useState } from "react";
 import { ArrowUpRight, Check } from "lucide-react";
 import { Link } from "react-router-dom";
 import { faqs, steps, useCases } from "../data/content";
+import {
+  MobileBenefitsRows,
+  MobileMergedProblemBoard,
+  MobileModuleExplorer,
+  MobileMultiProjectSummary,
+  MobileRoleRows,
+  MobileUseCaseGrid,
+  MobileWorkflowTimeline,
+} from "../components/sections/HomeMobilePresentation";
 import { Showcases } from "../components/sections/Showcases";
 import { Button } from "../components/ui/Button";
 import { FAQAccordion } from "../components/ui/FAQAccordion";
@@ -50,9 +59,9 @@ export function Home() {
               <Check size={16} /> Built around project-level operations
             </p>
           </div>
-          <div className="hero-stack">
+          <div className="hero-stack home-desktop-only">
             <ProductMockup view="projects" compact className="screen-back" />
-            <ProductMockup className="screen-front" />
+            <ProductMockup view="payments" className="screen-front" />
           </div>
         </div>
         <div className="hero-rail" aria-label="Operations covered">
@@ -69,60 +78,72 @@ export function Home() {
         </div>
       </section>
 
-      <section className="ops">
-        <div className="ops-mark">01 — Project operations</div>
-        <div className="ops-copy">
-          <h2>Construction projects have too many moving parts.</h2>
-          <p>
-            When project records live across spreadsheets, WhatsApp messages,
-            paper notes and disconnected files, it is difficult to understand
-            the actual status of a project.
-          </p>
-        </div>
-        <div className="ops-index">
-          {[
-            "Client payments",
-            "Budgets",
-            "Materials",
-            "Labour",
-            "Drawings",
-            "Daily expenses",
-            "Site activities",
-            "Project records",
-          ].map((item, i) => (
-            <span key={item}>
-              <small>0{i + 1}</small>
-              {item}
-            </span>
-          ))}
-        </div>
-      </section>
-
-      <section className="board">
-        <div className="board-copy">
-          <p className="eyebrow">Project visibility</p>
-          <h2>Know what is happening across your projects.</h2>
-          <p>
-            Turn project data into a clear operational view for faster
-            decision-making.
-          </p>
-          <ul>
+      <div className="home-desktop-only">
+        <section className="ops">
+          <div className="ops-mark">01 — Project operations</div>
+          <div className="ops-copy">
+            <h2>Construction projects have too many moving parts.</h2>
+            <p>
+              When project records live across spreadsheets, WhatsApp messages,
+              paper notes and disconnected files, it is difficult to understand
+              the actual status of a project.
+            </p>
+          </div>
+          <div className="ops-index">
             {[
-              "Project budgets and spending",
-              "Payments received and expected",
-              "Current balance and balance to be paid",
-              "Payment activity at a glance",
-            ].map((item) => (
-              <li key={item}>{item}</li>
+              "Client payments",
+              "Budgets",
+              "Materials",
+              "Labour",
+              "Drawings",
+              "Daily expenses",
+              "Site activities",
+              "Project records",
+            ].map((item, i) => (
+              <span key={item}>
+                <small>0{i + 1}</small>
+                {item}
+              </span>
             ))}
-          </ul>
-        </div>
-        <div className="board-frame">
-          <ProductMockup />
-        </div>
-      </section>
+          </div>
+        </section>
 
-      <Showcases />
+        <section className="board">
+          <div className="board-copy">
+            <p className="eyebrow">Project visibility</p>
+            <h2>Know what is happening across your projects.</h2>
+            <p>
+              Turn project data into a clear operational view for faster
+              decision-making.
+            </p>
+            <ul>
+              {[
+                "Project budgets and spending",
+                "Payments received and expected",
+                "Current balance and balance to be paid",
+                "Payment activity at a glance",
+              ].map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="board-frame">
+            <ProductMockup />
+          </div>
+        </section>
+      </div>
+
+      <div className="home-mobile-only">
+        <MobileMergedProblemBoard />
+      </div>
+
+      <div className="home-desktop-only">
+        <Showcases />
+      </div>
+
+      <div className="home-mobile-only">
+        <MobileModuleExplorer />
+      </div>
 
       <section className="roles-band">
         <div className="roles-head">
@@ -132,11 +153,11 @@ export function Home() {
             Company teams, supervisors and clients see project information
             appropriate to their role.
           </p>
-          <Button to="/roles" variant="secondary">
+          <Button to="/roles" variant="secondary" className="home-desktop-only">
             Explore user roles
           </Button>
         </div>
-        <div className="role-panels">
+        <div className="role-panels home-desktop-only">
           <article>
             <ProductMockup view="access" compact />
             <div>
@@ -168,10 +189,13 @@ export function Home() {
             </div>
           </article>
         </div>
+        <div className="home-mobile-only">
+          <MobileRoleRows />
+        </div>
       </section>
 
       <section className="sites">
-        <div className="sites-line">
+        <div className="sites-line home-desktop-only">
           <b>Company workspace</b>
           {["Project 01", "Project 02", "Project 03", "Project 04", "Project 05"].map(
             (name) => (
@@ -182,22 +206,25 @@ export function Home() {
             ),
           )}
         </div>
+        <div className="home-mobile-only">
+          <MobileMultiProjectSummary />
+        </div>
         <div className="sites-copy">
           <h2>Built for construction companies managing multiple projects.</h2>
-          <p>
+          <p className="home-desktop-only">
             Whether you are managing a few houses or multiple construction
             sites, each project keeps its own operational information.
           </p>
-          <Button to="/how-it-works" variant="secondary">
+          {/* <Button to="/how-it-works" variant="secondary">
             See how it works
-          </Button>
+          </Button> */}
         </div>
       </section>
 
       <section className="spec">
         <p className="eyebrow">Why ELVA CMS</p>
         <h2>A clearer way to run project operations.</h2>
-        <div>
+        <div className="home-desktop-only">
           {[
             ["Manage more projects", "Keep multiple projects organized in one platform."],
             ["Reduce manual tracking", "Bring project records into a structured digital system."],
@@ -210,15 +237,23 @@ export function Home() {
             </article>
           ))}
         </div>
+        <div className="home-mobile-only">
+          <MobileBenefitsRows />
+        </div>
       </section>
 
       <section className="track">
         <div className="track-copy">
           <p className="eyebrow">How ELVA CMS works</p>
           <h2>From company workspace to project visibility.</h2>
-          <p key={step}>{stepNotes[step]}</p>
+          <p className="home-desktop-only" key={step}>
+            {stepNotes[step]}
+          </p>
+          <p className="home-mobile-only mobile-lead">
+            Six steps from company setup to project monitoring.
+          </p>
         </div>
-        <div className="track-line">
+        <div className="track-line home-desktop-only">
           {steps.map((label, i) => (
             <button
               key={label}
@@ -231,11 +266,14 @@ export function Home() {
             </button>
           ))}
         </div>
+        <div className="home-mobile-only">
+          <MobileWorkflowTimeline />
+        </div>
       </section>
 
       <section className="usecases">
         <h2>For the ways construction teams operate.</h2>
-        <div>
+        <div className="home-desktop-only">
           {useCases.map((item, i) => (
             <Link to="/use-cases" key={item}>
               <span>0{i + 1}</span>
@@ -243,6 +281,9 @@ export function Home() {
               <ArrowUpRight />
             </Link>
           ))}
+        </div>
+        <div className="home-mobile-only">
+          <MobileUseCaseGrid />
         </div>
       </section>
 

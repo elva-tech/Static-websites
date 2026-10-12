@@ -7,6 +7,8 @@ import "./styles/components.css";
 import "./styles/product.css";
 import "./styles/sections.css";
 import "./styles/responsive.css";
+import "./styles/mobile.css";
+import "./styles/home-mobile.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

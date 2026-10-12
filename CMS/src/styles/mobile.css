@@ -1,0 +1,661 @@
+/* *
+ * Mobile-first layout and typography (below 768px).
+ * Desktop presentation at 1024px+ is defined in base styles + responsive.css.
+ */
+
+@media (max-width: 767px) {
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  main {
+    overflow-x: clip;
+  }
+
+  .header {
+    height: 64px;
+  }
+
+  .nav-wrap {
+    padding: 0 16px;
+    gap: 10px;
+  }
+
+  .brand img {
+    width: 32px;
+    height: 32px;
+    max-width: 32px;
+  }
+
+  .brand b {
+    font-size: 18px;
+  }
+
+  .brand small {
+    font-size: 9px;
+    letter-spacing: 0.04em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .header-demo {
+    display: none;
+  }
+
+  .menu {
+    display: grid;
+    width: 44px;
+    height: 44px;
+  }
+
+  .nav.open {
+    inset: 64px 0 0 0;
+    padding: 20px 20px 28px;
+    gap: 0;
+  }
+
+  .nav.open a {
+    font-size: 28px;
+    line-height: 1.15;
+    padding: 14px 0;
+  }
+
+  .nav.open .mobile-cta {
+    display: inline-flex;
+    width: 100%;
+    margin-top: 20px;
+    min-height: 48px;
+    font-size: 14px;
+  }
+
+  .button {
+    min-height: 48px;
+    padding: 14px 18px;
+    font-size: 14px;
+  }
+
+  .hero {
+    padding-top: 12px;
+  }
+
+  .hero-headline {
+    padding: 12px 20px 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(40px, 11vw, 52px);
+    line-height: 0.95;
+    max-width: none;
+  }
+
+  .hero-stage {
+    grid-template-columns: 1fr;
+    padding: 20px 20px 28px;
+    gap: 28px;
+    align-items: start;
+  }
+
+  .hero-text {
+    font-size: 17px;
+    line-height: 1.6;
+    max-width: none;
+  }
+
+  .hero-actions {
+    width: 100%;
+    gap: 12px;
+  }
+
+  .hero-note {
+    font-size: 15px;
+  }
+
+  .hero-stack {
+    min-height: 0;
+    margin-top: 4px;
+  }
+
+  .screen-back {
+    display: none;
+  }
+
+  .screen-front {
+    width: 100%;
+    margin: 0;
+    transform: none;
+  }
+
+  .hero-rail {
+    grid-template-columns: 1fr;
+    margin-top: 0;
+  }
+
+  .hero-rail span {
+    padding: 16px 20px;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    border-right: 0;
+    border-bottom: 1px solid #2c3848;
+  }
+
+  .hero-rail span:last-child {
+    border-bottom: 0;
+  }
+
+  .ops {
+    padding: 40px 20px 0;
+    gap: 16px;
+  }
+
+  .ops-mark {
+    font-size: 13px;
+  }
+
+  .ops-copy h2 {
+    font-size: clamp(28px, 8vw, 36px);
+    max-width: none;
+    line-height: 1;
+  }
+
+  .ops-copy p {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .ops-index {
+    grid-template-columns: 1fr;
+    border-top-width: 2px;
+  }
+
+  .ops-index span {
+    padding: 16px 18px;
+    font-size: 16px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .ops-index small {
+    font-size: 12px;
+  }
+
+  .board {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    margin-top: 0;
+  }
+
+  .board-copy {
+    position: static;
+    padding: 36px 20px 24px;
+  }
+
+  .board-copy h2 {
+    font-size: clamp(28px, 8vw, 36px);
+    line-height: 1;
+  }
+
+  .board-copy p,
+  .board-copy li {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .board-frame {
+    padding: 0 20px 32px;
+  }
+
+  .board-frame .product-mockup {
+    transform: none;
+    border-radius: 12px;
+  }
+
+  .band {
+    grid-template-columns: 1fr;
+    padding: 40px 20px;
+    gap: 28px;
+  }
+
+  .band-copy h2 {
+    font-size: clamp(28px, 8vw, 38px);
+    line-height: 1;
+  }
+
+  .band-copy p {
+    font-size: 17px;
+    line-height: 1.6;
+    max-width: none;
+  }
+
+  .band-bleed .band-frame,
+  .band-split .band-frame,
+  .band-crop .band-frame {
+    margin: 0;
+    max-height: none;
+    order: 0;
+  }
+
+  .roles-band {
+    padding: 40px 20px 44px;
+  }
+
+  .roles-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .roles-head h2 {
+    font-size: clamp(28px, 8vw, 36px);
+    max-width: none;
+  }
+
+  .roles-head p {
+    font-size: 17px;
+    max-width: none;
+  }
+
+  .role-panels {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .role-panels article {
+    padding: 16px;
+    display: grid;
+    gap: 16px;
+  }
+
+  .role-panels h3 {
+    font-size: 24px;
+  }
+
+  .role-panels p {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .sites {
+    padding: 40px 20px 24px;
+  }
+
+  .sites-line {
+    grid-template-columns: 1fr;
+  }
+
+  .sites-line b,
+  .sites-line span {
+    padding: 16px 18px;
+    font-size: 16px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .sites-copy {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-top: 24px;
+  }
+
+  .sites-copy h2 {
+    font-size: clamp(26px, 7vw, 34px);
+  }
+
+  .sites-copy p {
+    font-size: 17px;
+  }
+
+  .spec {
+    padding: 40px 20px;
+  }
+
+  .spec h2 {
+    font-size: clamp(28px, 8vw, 36px);
+    margin-bottom: 20px;
+  }
+
+  .spec > div {
+    grid-template-columns: 1fr;
+  }
+
+  .spec article {
+    padding: 20px 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .spec h3 {
+    font-size: 22px;
+  }
+
+  .spec article p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .track {
+    padding: 40px 20px 44px;
+  }
+
+  .track-copy {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .track-copy h2 {
+    font-size: clamp(28px, 8vw, 36px);
+  }
+
+  .track-copy p:last-child {
+    font-size: 17px;
+    line-height: 1.6;
+  }
+
+  .track-line {
+    grid-template-columns: 1fr;
+  }
+
+  .track-line button {
+    min-height: 0;
+    padding: 16px 18px;
+    font-size: 16px;
+    line-height: 1.35;
+    border-right: 0;
+  }
+
+  .usecases {
+    padding: 40px 20px 24px;
+  }
+
+  .usecases h2 {
+    font-size: clamp(28px, 8vw, 36px);
+    margin-bottom: 16px;
+  }
+
+  .usecases a {
+    grid-template-columns: 48px 1fr 24px;
+    font-size: clamp(22px, 6vw, 28px);
+    padding: 18px 0;
+    gap: 12px;
+  }
+
+  .faq {
+    grid-template-columns: 1fr;
+    padding: 40px 20px 48px;
+    gap: 20px;
+  }
+
+  .faq h2 {
+    font-size: clamp(28px, 8vw, 36px);
+    position: static;
+  }
+
+  .faq-list button {
+    font-size: 20px;
+    line-height: 1.25;
+    padding: 18px 0;
+  }
+
+  .faq-list p {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .final-cta {
+    grid-template-columns: 1fr;
+    padding: 40px 20px;
+    gap: 20px;
+  }
+
+  .final-cta h2 {
+    font-size: clamp(28px, 8vw, 36px);
+  }
+
+  .final-cta p {
+    font-size: 17px;
+  }
+
+  .final-actions {
+    width: 100%;
+    gap: 12px;
+  }
+
+  .page-intro {
+    grid-template-columns: 1fr;
+    padding: 96px 20px 32px;
+    gap: 16px;
+  }
+
+  .page-intro h1 {
+    font-size: clamp(36px, 10vw, 48px);
+    max-width: none;
+  }
+
+  .page-intro > p:last-child {
+    font-size: 17px;
+    max-width: none;
+  }
+
+  .legal-body {
+    padding: 28px 20px 56px;
+  }
+
+  .footer {
+    padding: 40px 20px 24px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .footer-grid > div:last-child {
+    display: block;
+  }
+
+  .footer a {
+    font-size: 16px;
+    padding: 4px 0;
+  }
+
+  .copyright {
+    font-size: 14px;
+  }
+
+  .module-grid,
+  .module-list,
+  .steps,
+  .usecase-cards,
+  .role-pages,
+  .about,
+  .contact,
+  .workflow {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .module-list > article,
+  .role-pages article {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 28px 0;
+  }
+
+  .module-list > article > span {
+    font-size: 24px;
+  }
+
+  .module-list h2 {
+    font-size: clamp(26px, 7vw, 34px);
+  }
+
+  .contact {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-top: 0;
+  }
+
+  .contact form {
+    padding: 20px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .contact label {
+    font-size: 14px;
+  }
+
+  .contact input,
+  .contact textarea,
+  .contact select {
+    padding: 14px 12px;
+    font-size: 16px;
+    min-height: 48px;
+  }
+
+  .contact textarea {
+    min-height: 140px;
+  }
+
+  .form-submit {
+    width: 100%;
+    min-height: 48px;
+    font-size: 14px;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .steps article {
+    padding: 20px 0;
+    border-right: 0;
+  }
+
+  .usecase-cards article {
+    grid-template-columns: 1fr;
+    padding: 24px 0;
+  }
+
+  /* Product mockups — readable on small screens */
+  .product-mockup {
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(22, 32, 51, 0.1);
+  }
+
+  .browser-bar {
+    height: 32px;
+    padding: 0 10px;
+  }
+
+  .browser-bar em {
+    font-size: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 55%;
+  }
+
+  .app-shell {
+    min-height: 0;
+    flex-direction: column;
+  }
+
+  .app-shell aside {
+    width: 100%;
+    height: auto;
+    padding: 10px 16px;
+    grid-auto-flow: column;
+    grid-template-columns: auto repeat(5, 1fr);
+    justify-content: start;
+    gap: 12px;
+  }
+
+  .app-main {
+    padding: 18px 16px 20px;
+  }
+
+  .app-title h3 {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+
+  .app-title small,
+  .metric small,
+  .material-card small {
+    font-size: 12px;
+  }
+
+  .app-title button {
+    font-size: 12px;
+    padding: 10px 12px;
+    min-height: 44px;
+  }
+
+  .metric-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .metric {
+    padding: 16px;
+  }
+
+  .metric strong {
+    font-size: 24px;
+  }
+
+  .metric span {
+    font-size: 14px;
+  }
+
+  .charts {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .chart,
+  .material-card,
+  .table {
+    padding: 16px;
+  }
+
+  .bars {
+    height: 100px;
+  }
+
+  .material-card p,
+  .table,
+  .sheet-rows span {
+    font-size: 15px;
+  }
+
+  .material-pct-label {
+    font-size: 18px;
+  }
+
+  .table > div,
+  .table p {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .table small,
+  .table > div span {
+    text-align: left;
+  }
+
+  .sheet-rows li {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 16px 4px;
+  }
+
+  .sheet-rows b {
+    font-size: 16px;
+  }
+}
