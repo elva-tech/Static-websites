@@ -178,11 +178,11 @@ export function Classes() {
     <section id="classes" className="bg-ink py-20 text-ink-foreground lg:py-28">
       <div className="container-x">
         <SectionHead tone="dark" eyebrow="Live & recorded classes" title="Every class, from schedule to revision." intro="Schedule classes, share meeting links through supported meeting-provider integrations, store recordings and attach them to lessons — with attendance and learning activity tracked along the way." />
-        <ol className="mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-7">
+        <ol className="mt-14 grid grid-cols-2 gap-3 lg:grid-cols-7">
           {steps.map((s, i) => (
-            <Reveal as="li" key={s} delay={i * 80} className="relative rounded-2xl border border-ink-border bg-ink-2 p-4">
+            <Reveal as="li" key={s} delay={i * 80} className="relative min-w-0 rounded-2xl border border-ink-border bg-ink-2 p-4">
               <span className="font-mono text-xs text-chart-2">{String(i + 1).padStart(2, "0")}</span>
-              <p className="mt-6 text-sm font-medium">{s}</p>
+              <p className="mt-3 text-sm font-medium sm:mt-6">{s}</p>
               {i < steps.length - 1 && <ArrowRight className="absolute -right-2.5 top-1/2 z-10 hidden size-4 -translate-y-1/2 text-ink-muted lg:block" aria-hidden />}
             </Reveal>
           ))}

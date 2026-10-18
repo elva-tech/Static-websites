@@ -26,16 +26,16 @@ const d = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
 export function Window({ title, children, className, dark }: { title: string; children: ReactNode; className?: string; dark?: boolean }) {
   return (
     <div className={cn("w-full min-w-0 max-w-full overflow-hidden rounded-2xl border shadow-float", dark ? "border-ink-border bg-ink-2" : "border-border bg-card", className)}>
-      <div className={cn("flex min-w-0 items-center justify-between gap-2 border-b px-4 py-2.5 sm:gap-3", dark ? "border-ink-border" : "border-border bg-surface")}>
+      <div className={cn("flex min-w-0 flex-wrap items-center justify-between gap-x-2 gap-y-1 border-b px-4 py-2.5 [contain:inline-size] sm:flex-nowrap sm:gap-3", dark ? "border-ink-border" : "border-border bg-surface")}>
         <div className="flex min-w-0 flex-1 items-center gap-2">
-          <span className="flex gap-1.5" aria-hidden>
+          <span className="flex shrink-0 gap-1.5" aria-hidden>
             <i className="size-2.5 rounded-full bg-input" />
             <i className="size-2.5 rounded-full bg-input" />
             <i className="size-2.5 rounded-full bg-input" />
           </span>
           <span className={cn("ml-2 truncate text-xs font-medium", dark ? "text-ink-muted" : "text-muted-foreground")}>{title}</span>
         </div>
-        <Illustrative tone={dark ? "dark" : "light"} className="max-w-[9rem] shrink truncate sm:max-w-none sm:whitespace-normal" />
+        <Illustrative tone={dark ? "dark" : "light"} className="basis-full sm:basis-auto sm:shrink" />
       </div>
       {children}
     </div>
@@ -85,7 +85,7 @@ export function AdminDashboard() {
             <Stat label="Attendance today" value="91%" sub="91%" delay={200} />
             <Stat label="Avg. test score" value="72%" sub="72%" delay={300} />
           </div>
-          <div className="grid gap-3 sm:grid-cols-[1.4fr_1fr]">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-[1.4fr_1fr]">
             <div className="rounded-xl border border-border p-3">
               <div className="flex items-center justify-between">
                 <p className="text-xs font-medium">Test performance · last 7 tests</p>
@@ -213,9 +213,9 @@ export function ParentReport() {
 export function TestPlayer() {
   return (
     <Window title="Mock Test · JEE Physics">
-      <div className="grid gap-4 p-4 text-[0.78rem] sm:grid-cols-[1fr_9.5rem]">
-        <div>
-          <div className="flex items-center justify-between text-muted-foreground"><span>Question 7 of 30 · +4 / −1</span><span className="flex items-center gap-1 font-mono"><Clock className="size-3.5" />42:18</span></div>
+      <div className="grid grid-cols-1 gap-4 p-4 text-[0.78rem] sm:grid-cols-[minmax(0,1fr)_9.5rem]">
+        <div className="min-w-0">
+          <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-muted-foreground"><span>Question 7 of 30 · +4 / −1</span><span className="flex items-center gap-1 font-mono"><Clock className="size-3.5" />42:18</span></div>
           <p className="mt-3 font-medium leading-relaxed">A body moving in a circle at constant speed has…</p>
           <ul className="mt-3 space-y-2">
             {["Constant velocity", "Constant acceleration", "Changing velocity, constant speed", "Zero acceleration"].map((o, i) => (
@@ -224,11 +224,11 @@ export function TestPlayer() {
               </li>
             ))}
           </ul>
-          <div className="mt-3 flex gap-2"><span className="flex items-center gap-1 rounded-full border border-border px-3 py-1.5"><Flag className="size-3" />Mark for review</span><span className="rounded-full bg-primary px-3 py-1.5 text-primary-foreground">Save &amp; next</span></div>
+          <div className="mt-3 flex flex-wrap gap-2"><span className="flex items-center gap-1 rounded-full border border-border px-3 py-1.5"><Flag className="size-3" />Mark for review</span><span className="rounded-full bg-primary px-3 py-1.5 text-primary-foreground">Save &amp; next</span></div>
         </div>
-        <div>
+        <div className="min-w-0">
           <p className="text-muted-foreground">Question palette</p>
-          <div className="mt-2 grid grid-cols-5 gap-1.5">
+          <div className="mt-2 grid grid-cols-10 gap-1.5 sm:grid-cols-5">
             {Array.from({ length: 30 }, (_, i) => (
               <span key={i} className={cn("flex aspect-square items-center justify-center rounded-md text-[0.6rem]", i < 6 ? "bg-success/20" : i === 6 ? "bg-primary text-primary-foreground" : i === 3 || i === 9 ? "bg-warning/25" : "bg-muted text-muted-foreground")}>{i + 1}</span>
             ))}

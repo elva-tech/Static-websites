@@ -5,6 +5,7 @@ import heroImg from "@/assets/hero-land.jpg";
 import landImg from "@/assets/land-aerial.jpg";
 import { Header, Footer } from "@/components/site/Chrome";
 import { LeadForm } from "@/components/site/LeadForm";
+import { WatchDemoButton } from "@/components/site/DemoVideo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -65,10 +66,11 @@ function Hero() {
             AI-powered property decision intelligence for safer property purchases and smarter real-estate investments.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <a href="#early-access" className="inline-flex items-center gap-2 bg-primary px-7 py-4 text-sm font-semibold text-primary-foreground transition hover:bg-accent hover:text-accent-foreground">
+            <a href="#early-access" className="inline-flex items-center justify-center gap-2 bg-primary px-7 py-4 text-sm font-semibold text-primary-foreground transition hover:bg-accent hover:text-accent-foreground max-sm:w-full">
               Get Early Access <ArrowRight className="size-4" />
             </a>
-            <a href="#features" className="inline-flex items-center gap-2 border border-primary/25 px-7 py-4 text-sm font-semibold text-primary transition hover:border-primary">
+            <WatchDemoButton className="justify-center max-sm:w-full" />
+            <a href="#features" className="inline-flex items-center justify-center gap-2 border border-primary/25 px-7 py-4 text-sm font-semibold text-primary transition hover:border-primary max-sm:w-full">
               Explore Features
             </a>
           </div>
@@ -103,7 +105,7 @@ function HeroCard() {
     { k: "Est. rental yield", v: "3.1%", tone: "text-teal" },
   ];
   return (
-    <div className="rise absolute -bottom-10 left-4 right-4 bg-card p-6 shadow-2xl shadow-primary/20 sm:-left-10 sm:right-auto sm:w-80" style={{ animationDelay: "0.3s" }}>
+    <div className="rise absolute -bottom-10 left-4 right-4 bg-card p-6 shadow-2xl shadow-primary/20 sm:right-auto sm:w-80 lg:-left-10" style={{ animationDelay: "0.3s" }}>
       <div className="flex items-center justify-between">
         <span className="eyebrow text-muted-foreground">Property snapshot</span>
         <span className="eyebrow text-[0.6rem] text-gold">Illustrative</span>
@@ -274,10 +276,10 @@ function Who() {
         <SectionHead n="05" eyebrow="Who it's for" title="Built for people making important property decisions." />
         <div className="mt-20 grid gap-px bg-border sm:grid-cols-2">
           {a.map(({ i: Icon, t, d }) => (
-            <article key={t} className="flex gap-6 bg-background p-8 lg:p-12">
+            <article key={t} className="flex flex-col gap-5 bg-background p-6 sm:p-8 lg:flex-row lg:gap-6 lg:p-12">
               <Icon className="size-7 shrink-0 text-gold" strokeWidth={1.5} />
-              <div>
-                <h3 className="display text-4xl text-primary">{t}</h3>
+              <div className="min-w-0">
+                <h3 className="display text-3xl text-primary md:text-4xl">{t}</h3>
                 <p className="mt-3 text-muted-foreground">{d}</p>
               </div>
             </article>

@@ -23,12 +23,12 @@ export const btn = cva(
 );
 export type BtnProps = VariantProps<typeof btn>;
 
-export function Logo({ className, tone = "dark" }: { className?: string; tone?: "dark" | "light" }) {
+export function Logo({ className, tone = "dark", full = false }: { className?: string; tone?: "dark" | "light"; full?: boolean }) {
   return (
     <span className={cn("inline-flex items-center gap-2.5", className)}>
       <img src={logo} alt="" width={32} height={32} className="size-8" />
       <span className={cn("font-display text-[1.05rem] font-semibold tracking-tight", tone === "light" ? "text-ink-foreground" : "text-foreground")}>
-        ELVA <span className="text-primary">LMS</span>
+        {full && "ELVA "}<span className="text-primary">LMS</span>
       </span>
       <span className="sr-only">ELVA LMS by ELVA Tech</span>
     </span>
@@ -116,8 +116,8 @@ function NavList({ items, active, href, rail }: { items: typeof NAV; active: str
             href={href(n.id)}
             aria-current={active === n.id ? "true" : undefined}
             className={cn(
-              "block whitespace-nowrap rounded-full px-3 text-[0.82rem] font-medium transition-colors",
-              rail ? "py-2" : "py-1.5",
+              "block whitespace-nowrap rounded-full text-[0.82rem] font-medium transition-colors",
+              rail ? "px-3 py-2" : "px-2 py-1.5 xl:px-3",
               active === n.id ? "bg-primary-soft text-accent-foreground" : "text-muted-foreground hover:text-foreground",
             )}
           >
@@ -144,7 +144,7 @@ export function Footer() {
     <footer className="bg-ink text-ink-foreground">
       <div className="container-x grid gap-12 py-16 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div className="max-w-sm">
-          <Logo tone="light" />
+          <Logo tone="light" full />
           <p className="mt-5 font-display text-xl leading-snug">AI-powered learning management for modern coaching institutes.</p>
           <p className="mt-3 text-sm text-ink-muted">Manage learning. Empower teachers. Understand students.</p>
         </div>

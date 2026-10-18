@@ -39,7 +39,14 @@ export function Navbar() {
               {x}
             </button>
           ))}
-          <button onClick={() => scrollTo('start')}>Get started</button>
+          <button
+            onClick={() => {
+              scrollTo('start')
+              setNavOpen(false)
+            }}
+          >
+            Get started
+          </button>
         </div>
       )}
     </nav>
