@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, X, Check, Sparkles, ShieldCheck } from "lucide-react";
 import { seo } from "@/lib/seo";
@@ -32,7 +33,7 @@ function Home() {
         <div className="container-x relative pb-16 pt-14 text-center md:pt-20">
           <div className="animate-rise mx-auto max-w-4xl">
             <p className="eyebrow font-mono text-muted-foreground">— From land to handover · From sales to finance —</p>
-            <h1 className="mt-5 text-[2.4rem] font-semibold leading-[1.08] text-foreground sm:text-5xl lg:text-[4rem]">
+            <h1 className="mt-5 text-[clamp(1.75rem,8.5vw,2.4rem)] font-semibold leading-[1.08] text-foreground sm:text-5xl lg:text-[4rem]">
               Run your entire real estate business on <span className="scribble">one connected ERP</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
@@ -237,7 +238,7 @@ function Home() {
           <div className="mt-12 grid gap-3 sm:grid-cols-3 lg:grid-cols-6">
             {scaleSteps.map((s, i) => (
               <Reveal key={s} delay={i * 60}>
-                <div className="flex h-full flex-col justify-end rounded-2xl bg-brand p-5 text-on-brand" style={{ minHeight: `${7 + i * 1.4}rem` }}>
+                <div className="flex h-full flex-col justify-end rounded-2xl bg-brand p-5 text-on-brand sm:min-h-(--stage-h)" style={{ "--stage-h": `${7 + i * 1.4}rem` } as CSSProperties}>
                   <p className="text-xs font-bold text-accent">Stage {i + 1}</p>
                   <p className="mt-1 font-display font-semibold">{s}</p>
                 </div>

@@ -122,7 +122,7 @@ function RealEstate({ s }: { s: Solution }) {
         const p = productBySlug(sec.slug)!;
         return (
           <section key={sec.title} className={i % 2 === 0 ? "section-y bg-surface" : "section-y"}>
-            <div className="container-x grid gap-12 lg:grid-cols-2 lg:items-center">
+            <div className="container-x grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
               <Reveal className={i % 2 ? "lg:order-2" : ""}>
                 <p className="eyebrow">{p.name}</p>
                 <h2 className="mt-3 text-3xl font-semibold leading-tight md:text-4xl">{sec.title}</h2>

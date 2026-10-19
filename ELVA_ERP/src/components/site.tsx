@@ -1,7 +1,8 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import { ArrowRight, ChevronDown, Menu, X, Check, Plus, Minus, AlertTriangle, TrendingUp, Search } from "lucide-react";
-import logo from "@/assets/elva-logo.svg.asset.json";
+import logo from "@/assets/elva-logo.svg";
 import { products, solutions, nav, site, type Faq, type Product } from "@/content";
 import { cn } from "@/lib/utils";
 
@@ -24,7 +25,7 @@ export function btn(variant: keyof typeof btnVariants = "accent", size: keyof ty
 export function Logo({ size = 40 }: { size?: number }) {
   return (
     <img
-      src={logo.url}
+      src={logo}
       alt="ELVA"
       width={size}
       height={size}
@@ -250,11 +251,16 @@ export function Header() {
         )}
       </div>
 
-      {/* Mobile drawer */}
-      {mobile && (
+      {/* Mobile drawer — portalled to body: the header's backdrop-filter would otherwise trap this fixed overlay inside the header bar */}
+      {mobile && createPortal(
         <div className="fixed inset-0 z-[60] lg:hidden" role="dialog" aria-modal="true" aria-label="Menu">
           <button type="button" className="absolute inset-0 bg-brand-deep/50" aria-label="Close menu" onClick={() => setMobile(false)} />
-          <div className="animate-rise absolute inset-y-0 right-0 flex w-full max-w-sm flex-col bg-background shadow-lift">
+          <div
+            className="animate-rise absolute inset-y-0 right-0 flex w-full max-w-sm flex-col bg-background shadow-lift"
+            onClick={(e) => {
+              if ((e.target as HTMLElement).closest("a")) setMobile(false);
+            }}
+          >
             <div className="flex h-16 items-center justify-between border-b border-border px-5">
               <Link to="/" className="flex items-center gap-2.5">
                 <Logo size={34} />
@@ -297,7 +303,8 @@ export function Header() {
               <Link to="/request-proposal" className={btn("outline", "lg")}>Request a Proposal</Link>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
     </header>
   );
@@ -585,15 +592,15 @@ export function DashboardMock({ title = "Portfolio command centre", metrics, com
           <div className="overflow-hidden rounded-lg border border-border">
             <table className="w-full text-left text-[0.7rem]">
               <thead className="bg-surface text-muted-foreground">
-                <tr><th className="px-2.5 py-1.5 font-semibold">Project</th><th className="px-2.5 py-1.5 font-semibold">Progress</th><th className="hidden px-2.5 py-1.5 font-semibold sm:table-cell">Margin</th><th className="px-2.5 py-1.5 font-semibold">Status</th></tr>
+                <tr><th className="w-full px-2.5 py-1.5 font-semibold">Project</th><th className="px-1.5 py-1.5 font-semibold sm:px-2.5">Progress</th><th className="hidden px-2.5 py-1.5 font-semibold sm:table-cell">Margin</th><th className="whitespace-nowrap py-1.5 pl-1.5 pr-2 font-semibold sm:px-2.5">Status</th></tr>
               </thead>
               <tbody>
                 {projects.map((p) => (
                   <tr key={p.n} className="border-t border-border">
-                    <td className="truncate px-2.5 py-1.5 font-medium">{p.n}</td>
-                    <td className="px-2.5 py-1.5"><span className="block h-1.5 w-full max-w-16 rounded-full bg-secondary"><span className="block h-full rounded-full bg-insight" style={{ width: `${p.p}%` }} /></span></td>
+                    <td className="max-w-0 truncate px-2.5 py-1.5 font-medium">{p.n}</td>
+                    <td className="px-1.5 py-1.5 sm:px-2.5"><span className="block h-1.5 w-8 rounded-full bg-secondary sm:w-16"><span className="block h-full rounded-full bg-insight" style={{ width: `${p.p}%` }} /></span></td>
                     <td className="hidden px-2.5 py-1.5 sm:table-cell">{p.m}</td>
-                    <td className="px-2.5 py-1.5"><span className={cn("rounded-full px-1.5 py-0.5 font-semibold", p.s === "On track" ? "bg-success/15 text-success" : "bg-warning/15 text-warning")}>{p.s}</span></td>
+                    <td className="whitespace-nowrap py-1.5 pl-1.5 pr-2 sm:px-2.5"><span className={cn("rounded-full px-1.5 py-0.5 font-semibold", p.s === "On track" ? "bg-success/15 text-success" : "bg-warning/15 text-warning")}>{p.s}</span></td>
                   </tr>
                 ))}
               </tbody>
