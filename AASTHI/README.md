@@ -1,24 +1,18 @@
-# Pixel Perfect
+# Aasthi website
 
-Implement exactly the screenshot and nothing else
-
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/dd9966fe-f7d6-4fdd-9f07-d5a34977cdaa).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+Marketing site for Aasthi by ELVA Technologies, built with TanStack Start, React and Tailwind CSS.
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+npm install
 npm run dev
 ```
+
+## Production build
+
+```sh
+npm run build
+```
+
+The early-access form is emailed through FormSubmit; the endpoint is in `src/config/formsubmit.ts`.

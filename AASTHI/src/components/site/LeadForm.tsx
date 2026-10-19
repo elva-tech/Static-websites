@@ -2,7 +2,7 @@ import { useState, type FormEvent } from "react";
 import { Link } from "@tanstack/react-router";
 import { Check, Loader2 } from "lucide-react";
 import { leadSchema, ROLES } from "@/lib/lead-schema";
-import { submitLead } from "@/lib/leads.functions";
+import { FORMSUBMIT_ENDPOINT } from "@/config/formsubmit";
 
 type Status = "idle" | "loading" | "success" | "error";
 const fieldCls =
@@ -35,13 +35,27 @@ export function LeadForm() {
     }
     setErrors({});
     setStatus("loading");
+    const v = parsed.data;
     try {
-      const res = await submitLead({ data: parsed.data });
-      setMessage(
-        "duplicate" in res && res.duplicate
-          ? "You're already on the list — we'll be in touch."
-          : "Thank you. You're on the early-access list.",
-      );
+      const res = await fetch(FORMSUBMIT_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          "Full name": v.fullName,
+          Email: v.email,
+          Mobile: v.phone,
+          City: v.city,
+          "I am a": v.role,
+          Consent: "Agreed to be contacted about Aasthi updates",
+          _subject: "New Aasthi Early Access Request",
+          _replyto: v.email,
+          _template: "table",
+          _honey: v.website ?? "",
+        }),
+      });
+      const result = await res.json().catch(() => ({}));
+      if (!res.ok || result.success === false || result.success === "false") throw new Error(result.message);
+      setMessage("Thank you. You're on the early-access list.");
       setStatus("success");
     } catch {
       setMessage("Something went wrong. Please try again in a moment.");
