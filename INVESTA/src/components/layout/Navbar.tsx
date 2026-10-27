@@ -2,11 +2,11 @@ import { Menu, X, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 
 const links = [
-  ["Platform", "#platform"],
-  ["Invest", "#invest"],
-  ["Borrow", "#borrow"],
-  ["Security", "#security"],
-  ["FAQ", "#faq"],
+  ["Platform", "/#platform"],
+  ["Invest", "/#invest"],
+  ["Borrow", "/#borrow"],
+  ["Security", "/#security"],
+  ["FAQ", "/#faq"],
 ];
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -16,7 +16,7 @@ export function Navbar() {
         Skip to content
       </a>
       <nav className="nav container" aria-label="Main navigation">
-        <a className="brand" href="#top" aria-label="ELVA Investa home">
+        <a className="brand" href="/#top" aria-label="ELVA Investa home">
           <img src="/brand/elva.svg" alt="ELVA" />
           <span>INVESTA</span>
         </a>
@@ -28,7 +28,7 @@ export function Navbar() {
           ))}
           <a
             className="button nav-cta"
-            href="#demo"
+            href="/#demo"
             onClick={() => setOpen(false)}
           >
             Request a demo <ArrowUpRight size={15} />
